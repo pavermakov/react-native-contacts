@@ -1,8 +1,8 @@
 import { createStackNavigator } from 'react-navigation';
-import { ContactsListScreen } from '@features/contacts-list';
+import { screen as ContactsListScreen } from '@features/contacts-list';
 
 const screens = {
-  ContactsListScreen
+  ContactsListScreen,
 };
 
 const globalOptions = {

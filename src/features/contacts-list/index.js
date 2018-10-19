@@ -1,5 +1,4 @@
-import ContactsListScreen from './ContactsListScreen';
-import contactsListReducer from './store/reducers';
-import contactsListSagas from './store/sagas';
+import screen from './containers/ContactsList.screen';
+import reducer from './contactsList.reducers';
 
-export { ContactsListScreen, contactsListReducer, contactsListSagas };
+export { screen, reducer };
