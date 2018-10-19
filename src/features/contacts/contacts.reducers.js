@@ -1,5 +1,5 @@
 import { injectReducer } from '@utilities/helpers';
-import { actionTypes } from './contactsList.constants';
+import { actionTypes } from './contacts.constants';
 
 const INITIAL_STATE = {
   users: [],

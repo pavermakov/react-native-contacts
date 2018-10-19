@@ -1,29 +1,12 @@
 import { createStackNavigator } from 'react-navigation';
-import { screen as ContactsListScreen } from '@features/contacts-list';
+import { screen as ContactsScreen } from '@features/contacts';
 
 const screens = {
-  ContactsListScreen,
+  ContactsScreen,
 };
 
 const globalOptions = {
-  initialRouteName: 'ContactsListScreen',
-  navigationOptions: {
-    headerStyle: {
-      backgroundColor: 'transparent',
-      borderBottomColor: 'transparent'
-    },
-    headerTitleStyle: {
-      color: 'white',
-      fontSize: 40,
-    },
-    headerBackTitleStyle: {
-      color: 'white',
-    },
-    headerTintColor: 'white',
-  },
-  cardStyle: {
-    backgroundColor: 'white',
-  },
+  initialRouteName: 'ContactsScreen',
 };
 
 export default createStackNavigator(screens, globalOptions);

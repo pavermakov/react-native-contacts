@@ -1,5 +1,5 @@
-import * as API from './contactsList.api';
-import { actionTypes } from './contactsList.constants';
+import * as API from './contacts.api';
+import { actionTypes } from './contacts.constants';
 
 export const fetchUsers = () => (dispatch) => {
   return new Promise((resolve, reject) => {

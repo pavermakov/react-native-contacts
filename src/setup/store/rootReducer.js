@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import { reducer as contactsListReducer } from '@features/contacts-list';
+import { reducer as contactsReducer } from '@features/contacts';
 
 export default combineReducers({
-  contactsListReducer,
+  contactsReducer,
 });
