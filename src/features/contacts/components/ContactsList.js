@@ -7,6 +7,10 @@ class ContactsList extends PureComponent {
     return item.email;
   };
 
+  selectUser = (user) => {
+    this.props.onUserSelect(user);
+  };
+
   renderItem = ({ item }) => {
     return (
       <ContactsListItem
@@ -14,6 +18,7 @@ class ContactsList extends PureComponent {
         email={item.email}
         phone={item.phone}
         avatar={item.picture.medium}
+        onPress={() => this.selectUser(item)}
       />
     );
   };

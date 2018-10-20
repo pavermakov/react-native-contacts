@@ -31,6 +31,10 @@ class Contacts extends PureComponent {
     this.props.onRefresh(this.state.page);
   };
 
+  viewUserDetails = (user) => {
+    this.props.navigation.push('Details', user);
+  };
+
   render() {
     return (
       <View style={s.wrapper}>
@@ -43,6 +47,7 @@ class Contacts extends PureComponent {
               items={this.props.users}
               onRefresh={this.refreshContacts}
               onEndReached={this.incrementPage}
+              onUserSelect={this.viewUserDetails}
             />
         }
       </View>

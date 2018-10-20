@@ -5,10 +5,6 @@ import Contacts from "../components/Contacts";
 import { fetchUsers } from '../contacts.actions';
 
 class ContactsScreen extends PureComponent {
-  static navigationOptions = {
-    title: 'Contacts',
-  };
-
   state = {
     isLoading: false,
   };
@@ -29,6 +25,7 @@ class ContactsScreen extends PureComponent {
   render() {
     return (
       <Contacts
+        navigation={this.props.navigation}
         isLoading={this.state.isLoading}
         users={this.props.users}
         onRefresh={this.refreshContacts}

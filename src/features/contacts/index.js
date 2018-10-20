@@ -1,4 +1,4 @@
-import screen from './containers/Contacts.screen';
+import screens from './contacts.screens';
 import reducer from './contacts.reducer';
 
-export { screen, reducer };
+export { screens, reducer };

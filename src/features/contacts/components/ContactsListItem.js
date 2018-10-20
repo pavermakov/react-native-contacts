@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 
 class ContactsListItem extends PureComponent {
   render() {
     return (
-      <View style={s.wrapper}>
+      <TouchableOpacity
+        style={s.wrapper}
+        onPress={this.props.onPress}
+      >
         <View style={s.avatar}>
           <Image
             style={s.image}
@@ -20,7 +23,7 @@ class ContactsListItem extends PureComponent {
             <Text style={s.text}>{this.props.email}</Text>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 }
@@ -52,10 +55,12 @@ const s = StyleSheet.create({
 
   text: {
     fontSize: 12,
+    color: 'grey',
   },
 
   name: {
     fontWeight: 'bold',
+    color: 'black',
     fontSize: 18,
     paddingBottom : 5
   },
