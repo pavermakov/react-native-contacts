@@ -7,6 +7,7 @@ import Loader from '@utilities/components/Loader';
 class Contacts extends PureComponent {
   state = {
     isRefreshing: false,
+    page: 1,
   };
 
   refreshContacts = () => {
@@ -16,6 +17,18 @@ class Contacts extends PureComponent {
       .then(() => {
         this.setState({ isRefreshing: false });
       });
+  };
+
+  incrementPage = () => {
+    this.setState((prevState) => {
+      return {
+        page: prevState.page += 1,
+      };
+    }, this.fetchNextPage);
+  };
+
+  fetchNextPage = () => {
+    this.props.onRefresh(this.state.page);
   };
 
   render() {
@@ -29,6 +42,7 @@ class Contacts extends PureComponent {
               isRefreshing={this.state.isRefreshing}
               items={this.props.users}
               onRefresh={this.refreshContacts}
+              onEndReached={this.incrementPage}
             />
         }
       </View>

@@ -22,8 +22,8 @@ class ContactsScreen extends PureComponent {
       });
   }
 
-  refreshContacts = () => {
-    return this.props.fetchUsers();
+  refreshContacts = (page) => {
+    return this.props.fetchUsers({ page });
   };
 
   render() {

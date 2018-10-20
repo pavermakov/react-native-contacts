@@ -7,6 +7,9 @@ const INITIAL_STATE = {
 
 export default injectReducer(INITIAL_STATE, {
   [actionTypes.FETCH_USERS]: (state, { payload }) => {
-    return { ...state, users: payload };
+    return {
+      ...state,
+      users: state.users.concat(payload),
+    };
   },
 });
