@@ -1,8 +1,12 @@
+import React from "react"
 import { createStackNavigator } from 'react-navigation';
 import Contacts from './containers/Contacts.connect';
 import Details from './components/Details';
 
-const screens = {
+import TabBarIcon from "@utilities/components/TabBarIcon";
+import { images } from '@utilities/constants';
+
+const ContactsStack = createStackNavigator({
   Contacts: {
     screen: Contacts,
     navigationOptions: {
@@ -13,9 +17,14 @@ const screens = {
   Details: {
     screen: Details,
     navigationOptions: ({ navigation }) => ({
-      title: `${navigation.state.params.name.first} ${navigation.state.params.name.last}`
+      title: `${navigation.state.params.name.first} ${navigation.state.params.name.last}`,
     }),
   },
-};
+});
 
-export default createStackNavigator(screens);
+ContactsStack.navigationOptions = ({ navigation }) => ({
+  tabBarVisible: navigation.state.index === 0,
+  tabBarIcon: <TabBarIcon source={images.icons.contacts} />,
+});
+
+export default ContactsStack;

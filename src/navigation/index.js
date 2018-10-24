@@ -1,12 +1,14 @@
-import { createTabNavigator } from 'react-navigation';
-import { screens as ContactsScreens } from '@features/contacts';
+import { createBottomTabNavigator } from 'react-navigation';
+import { screens as Contacts } from '@features/contacts';
+import { screens as Settings } from '@features/settings';
 
 const screens = {
-  ContactsScreens,
+  Contacts,
+  Settings,
 };
 
 const globalOptions = {
-  initialRouteName: 'ContactsScreens',
+  initialRouteName: 'Contacts',
 };
 
-export default createTabNavigator(screens, globalOptions);
+export default createBottomTabNavigator(screens, globalOptions);

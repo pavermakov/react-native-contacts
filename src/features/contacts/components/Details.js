@@ -1,52 +1,116 @@
 import React, { PureComponent } from 'react';
-import { View, Image, Text, ImageBackground, StyleSheet } from 'react-native';
+import { View, ScrollView, Image, Text, ImageBackground, StyleSheet } from 'react-native';
 import { getRandomPattern } from '@utilities/helpers';
 
 class Details extends PureComponent {
-  componentDidMount() {
-
-  }
-
   patternSource = getRandomPattern();
 
   get avatar() {
     return this.props.navigation.state.params.picture.large;
   }
 
-  get fullName() {
-    const { name } = this.props.navigation.state.params;
-
-    return `${name.first} ${name.last}`;
+  get username() {
+    return this.props.navigation.state.params.login.username;
   }
 
-  get userName() {
-    return `@${this.props.navigation.state.params.login.username}`;
+  get email() {
+    return this.props.navigation.state.params.email;
+  }
+
+  get phone() {
+    return this.props.navigation.state.params.phone;
+  }
+
+  get gender() {
+    return this.props.navigation.state.params.gender;
+  }
+
+  get age() {
+    return this.props.navigation.state.params.dob.age;
   }
 
   render() {
     return (
       <View style={s.wrapper}>
-        <ImageBackground
-          resizeMode='repeat'
-          source={this.patternSource}
-          style={s.jumbotron}
-        >
-          <View style={s.overlay} />
+        <ScrollView>
+          <ImageBackground
+            resizeMode='repeat'
+            source={this.patternSource}
+            style={s.jumbotron}
+          >
+            <View style={s.overlay} />
 
-          <View style={s.imageWrapper}>
-            <Image
-              style={s.avatar}
-              source={{ uri: this.avatar }}
-            />
+            <View style={s.imageWrapper}>
+              <Image
+                style={s.avatar}
+                source={{ uri: this.avatar }}
+              />
+            </View>
+
+            <View style={s.info}>
+              <Text style={s.handle}>@{this.username}</Text>
+            </View>
+
+          </ImageBackground>
+
+          <View>
+            <View style={s.section}>
+              <View style={[s.row, s.rowBorderless]}>
+                <View style={s.cell}>
+                  <Text>Email</Text>
+                </View>
+
+                <View style={s.cell}>
+                  <Text style={s.value}>{this.email}</Text>
+                </View>
+              </View>
+
+              <View style={s.row}>
+                <View style={s.cell}>
+                  <Text>Phone</Text>
+                </View>
+
+                <View style={s.cell}>
+                  <Text style={s.value}>{this.phone}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={s.section}>
+              <View style={[s.row, s.rowBorderless]}>
+                <View style={s.cell}>
+                  <Text>Username</Text>
+                </View>
+
+                <View style={s.cell}>
+                  <Text style={s.value}>{this.username}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={s.section}>
+              <View style={[s.row, s.rowBorderless]}>
+                <View style={s.cell}>
+                  <Text>Age</Text>
+                </View>
+
+                <View style={s.cell}>
+                  <Text style={s.value}>{this.age}</Text>
+                </View>
+              </View>
+
+              <View style={s.row}>
+                <View style={s.cell}>
+                  <Text>Gender</Text>
+                </View>
+
+                <View style={s.cell}>
+                  <Text style={s.value}>{this.gender}</Text>
+                </View>
+              </View>
+            </View>
           </View>
-
-          <View style={s.info}>
-            <Text style={[s.text, s.name]}>{this.fullName}</Text>
-            <Text style={s.text}>{this.userName}</Text>
-          </View>
-
-        </ImageBackground>
-
+        </ScrollView>
       </View>
     );
   }
@@ -55,7 +119,6 @@ class Details extends PureComponent {
 const s = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'blue'
   },
 
   jumbotron: {
@@ -73,7 +136,7 @@ const s = StyleSheet.create({
     bottom: 0,
     left: 0,
     backgroundColor: 'grey',
-    opacity: 0.45,
+    opacity: 0.65,
   },
 
   avatar: {
@@ -99,14 +162,38 @@ const s = StyleSheet.create({
     marginTop: 8,
   },
 
-  text: {
+  handle: {
+    fontWeight: 'bold',
+    color: 'white',
     lineHeight: 20,
   },
 
-  name: {
-    fontSize: 26,
-    lineHeight: 32,
-    fontWeight: 'bold'
+  section: {
+    marginTop: 25,
+    backgroundColor: 'white',
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    borderColor: 'rgba(165, 165, 165, 0.5)',
+  },
+
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: 'rgba(165, 165, 165, 0.5)',
+  },
+
+  rowBorderless: {
+    borderTopWidth: 0,
+    borderTopColor: 'transparent',
+  },
+
+  value: {
+    fontSize: 14,
+    color: 'grey',
   },
 });
 
